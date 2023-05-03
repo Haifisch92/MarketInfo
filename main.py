@@ -1,64 +1,71 @@
 import random, time
 
-print() 
+
 
 logo = """ 
-      +------------------------------------------------------------------------------------------------------+
-      |           ██████╗██╗    ██╗███████╗    ███████╗████████╗ ██████╗  ██████╗██╗  ██╗                    |
-      |          ██╔════╝██║    ██║██╔════╝    ██╔════╝╚══██╔══╝██╔═══██╗██╔════╝██║ ██╔╝                    |
-      |          ██║     ██║ █╗ ██║███████╗    ███████╗   ██║   ██║   ██║██║     █████╔╝                     |
-      |          ██║     ██║███╗██║╚════██║    ╚════██║   ██║   ██║   ██║██║     ██╔═██╗                     |
-      |          ╚██████╗╚███╔███╔╝███████║    ███████║   ██║   ╚██████╔╝╚██████╗██║  ██╗                    |
-      |           ╚═════╝ ╚══╝╚══╝ ╚══════╝    ╚══════╝   ╚═╝    ╚═════╝  ╚═════╝╚═╝  ╚═╝                    |
-      +------------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------+
+|                                                                                                                   |    
+|                    ██████╗██╗    ██╗███████╗    ███████╗████████╗ ██████╗  ██████╗██╗  ██╗                        |
+|                   ██╔════╝██║    ██║██╔════╝    ██╔════╝╚══██╔══╝██╔═══██╗██╔════╝██║ ██╔╝                        |
+|                   ██║     ██║ █╗ ██║███████╗    ███████╗   ██║   ██║   ██║██║     █████╔╝                         | 
+|                   ██║     ██║███╗██║╚════██║    ╚════██║   ██║   ██║   ██║██║     ██╔═██╗                         |
+|                   ╚██████╗╚███╔███╔╝███████║    ███████║   ██║   ╚██████╔╝╚██████╗██║  ██╗                        |
+|                    ╚═════╝ ╚══╝╚══╝ ╚══════╝    ╚══════╝   ╚═╝    ╚═════╝  ╚═════╝╚═╝  ╚═╝                        |
+|                                                                                                                   |
++-------------------------------------------------------------------------------------------------------------------+
 """
 
-UP     = "\x1B[3A"
+numero_stock = 8
+
+
+# DEFINISCO I CODICI ANSI
+
+UP     = f"\x1B[{numero_stock}A" # sposta il cursore in alto tanto quanto il numero_stock
 CLR    = "\x1B[0K"
 VERDE  = "\033[0;32m"
 ROSSO  = "\033[0;31m"
 BIANCO = "\033[0;97m"
 
-print(logo,"\n\n")
+print("\n",logo,"\n"*numero_stock)
 
 while True:
-   colonne = ["  Time","Symbol","Company Name", "%Chg","Volume","News"]
-   print("\x1B[3A{:<20} {:<20}  {:<25} {:<20} {:<20} {:<20}\x1B[0K".format(*colonne))
+   colonne = [UP,"  Time","Symbol","Company Name", "%Chg","Volume","News",CLR]
+   print("{}{:<20} {:<20}  {:<25} {:<20} {:<20} {:<20}{}".format(*colonne))
 
-
-   orders = random.randrange(1, 10)
-   operations = random.randrange(100, 200)
+   # NUMERI RANDOM E TIME DA PRINTARE PROVVISORIAMENTE
+   v1 = random.randrange(1, 10)
+   v2 = random.randrange(100, 200)
    vol1 = round(random.uniform(0.001,0.900),3)
    vol2 = round(random.uniform(0.001,0.900),3)
-
-
    named_tuple = time.localtime()
    time_string = time.strftime("%H:%M:%S", named_tuple)
 
-   if orders%2 == 0:
-      val1 = f"{VERDE}{orders}%{BIANCO}" 
-   else:
-      val1 = f"{ROSSO}{orders}%{BIANCO}" 
+   # DIZIONARIO COI VALORI DEGLI STOCK
+   stocks = { "APPL":{'time':time_string,'name':'Apple Inc.','chg':v2,'vol':vol1,'news':8},
+              "MIB":{'time':time_string,'name':'FTSE MIB','chg':v1,'vol':vol2,'news':10},
+              "SP500":{'time':time_string,'name':'Standard & Poor 500','chg':v2,'vol':vol2,'news':3},
+              "BTC":{'time':time_string,'name':'Bitcoin','chg':v1,'vol':vol1,'news':5},
+              "ETH":{'time':time_string,'name':'Ethereum','chg':v2,'vol':vol1,'news':6},
+              "OIL":{'time':time_string,'name':'West Texas Intermediate','chg':v1,'vol':vol1,'news':15},
+              "GOLD":{'time':time_string,'name':'Gold/Dollaro','chg':v2,'vol':vol2,'news':2},
+            }
 
-   if operations%2 == 0:
-      val2 = f"{VERDE}{operations}%{BIANCO}"
-   else:
-      val2 = f"{ROSSO}{operations}%{BIANCO}"
+   for stock,value in stocks.items():
+
+      if value['chg']%2 == 0:
+         chg = f"{VERDE}{value['chg']}%{BIANCO}" 
+      else:
+         chg = f"{ROSSO}{value['chg']}%{BIANCO}" 
 
 
+      stock_list = [value['time'], stock, value['name'], chg, value['vol'], value['news']]
 
-   appl = [time_string,"APPL","Apple Inc.",val2,vol1,"8"]
-   len_colorazione = len(val2)
-   len_cifra = len(str(operations))
-   formatsting = "{:<20} {:<20}  {:<25} {:<%s} {:<20} {:<20}%s"%(len_colorazione+20-len_cifra,CLR)
-   print(formatsting.format(*appl))
+      # CALCOLO LA LUNGHEZZA DEL CODICE ANSI PER AVERE UNA SPAZIATURA DINAMICA
+      len_colorazione = len(chg)
+      len_cifra = len(str(value['chg']))
 
-   sp = [time_string,"SP500","Standard & Poor 500",val1,vol2,"16"]
-   len_colorazione = len(val1)
-   len_cifra = len(str(orders))
-   formatsting = "{:<20} {:<20}  {:<25} {:<%s} {:<20} {:<20}%s"%(len_colorazione+20-len_cifra,CLR)
-   print(formatsting.format(*sp))
-
+      formatsting = "{:<20} {:<20}  {:<25} {:<%s} {:<20} {:<20}%s"%(len_colorazione+20-len_cifra,CLR)
+      print(formatsting.format(*stock_list))
 
 
    time.sleep(1)
