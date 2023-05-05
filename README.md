@@ -7,6 +7,7 @@ A minimal Stock price data
 Requirements for the software and other tools to build, test. 
 - Python3 installed
 - pip installed
+- Capital.com account & api key
 
 ### Installing
 
@@ -19,7 +20,7 @@ Installing python dependences with:
 
 Display market info on terminal:
 
-    python3 main.py
+    python3 market.py
 
 
 
