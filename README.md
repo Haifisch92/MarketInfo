@@ -8,6 +8,7 @@ Requirements for the software and other tools to build, test.
 - Python3 installed
 - pip installed
 - Capital.com account and api key
+- NerdFonts
 
 ### Installing
 
