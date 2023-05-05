@@ -1,6 +1,9 @@
-import random, time
+import random
+import time
+from pycapital import Capital
 
 logo = """
+
 +-------------------------------------------------------------------------------------------------------------------+
 |                           ███ █   █ ███   █   █ ███ ███ █ █ ███ ███   ███ █   █ ███ ███                           |
 |                           █   █   █ █     ██ ██ █ █ █ █ █ █ █    █     █  ██  █ █   █ █                           |
@@ -22,9 +25,13 @@ BIANCO = "\033[0;97m"
 
 print("\n",logo,"\n"*numero_stock)
 
+lastPrice = 0
+
+
+
 while True:
-   colonne = [UP,"  Time","Symbol","Company Name", "%Chg","Volume","News",CLR]
-   print("{}{:<20} {:<20}  {:<25} {:<20} {:<20} {:<20}{}\n".format(*colonne))
+   colonne = [UP,"  Time","Symbol","Company Name","Price","  %Chg","Volume","News",CLR]
+   print("{}{:<20} {:<20}  {:<25} {:<20} {:<20} {:<20} {:<20}{}\n".format(*colonne))
 
    # NUMERI RANDOM E TIME DA PRINTARE PROVVISORIAMENTE
    v1 = random.randrange(1, 10)
@@ -34,32 +41,35 @@ while True:
    named_tuple = time.localtime()
    time_string = time.strftime("%H:%M:%S", named_tuple)
 
+   ask = random.randrange(1, 200)
+   vol = random.randrange(100, 200)
+
    # DIZIONARIO COI VALORI DEGLI STOCK
-   stocks = { "APPL":{'time':time_string,'name':'Apple Inc.','chg':v2,'vol':vol1,'news':8},
-              "MIB":{'time':time_string,'name':'FTSE MIB','chg':v1,'vol':vol2,'news':10},
-              "SP500":{'time':time_string,'name':'Standard & Poor 500','chg':v2,'vol':vol2,'news':3},
-              "BTC":{'time':time_string,'name':'Bitcoin','chg':v1,'vol':vol1,'news':5},
-              "ETH":{'time':time_string,'name':'Ethereum','chg':v2,'vol':vol1,'news':6},
-              "OIL":{'time':time_string,'name':'West Texas Intermediate','chg':v1,'vol':vol1,'news':15},
-              "GOLD":{'time':time_string,'name':'Gold/Dollaro','chg':v2,'vol':vol2,'news':2},
+   stocks = { "APPL":{'time':time_string,'name':'Apple Inc.','price':ask,'chg':v2,'vol':vol,'news':8},
+              "MIB":{'time':time_string,'name':'FTSE MIB','price':ask,'chg':v1,'vol':vol,'news':10},
+              "SP500":{'time':time_string,'name':'Standard & Poor 500','price':ask,'chg':v2,'vol':vol,'news':3},
+              "BTC":{'time':time_string,'name':'Bitcoin','price':ask,'chg':v1,'vol':vol1,'news':5},
+              "ETH":{'time':time_string,'name':'Ethereum','price':ask,'chg':v2,'vol':vol1,'news':6},
+              "OIL":{'time':time_string,'name':'West Texas Intermediate','price':ask,'chg':v1,'vol':vol,'news':15},
+              "GOLD":{'time':time_string,'name':'Gold/Dollaro','price':ask,'chg':v2,'vol':vol2,'news':2},
             }
 
    for stock,value in stocks.items():
 
-      if value['chg']%2 == 0:
-         chg = f"{VERDE}{value['chg']}%{BIANCO}" 
+      if value['price'] > lastPrice:
+         price = f"{VERDE}{value['price']} ${BIANCO}" 
       else:
-         chg = f"{ROSSO}{value['chg']}%{BIANCO}" 
+         price = f"{ROSSO}{value['price']} ${BIANCO}" 
 
-
-      stock_list = [value['time'], stock, value['name'], chg, value['vol'], value['news']]
+      
+      stock_list = [value['time'], stock, value['name'], price, value['chg'], value['vol'], value['news']]
 
       # CALCOLO LA LUNGHEZZA DEL CODICE ANSI PER AVERE UNA SPAZIATURA DINAMICA
-      len_colorazione = len(chg)
-      len_cifra = len(str(value['chg']))
+      len_colorazione = len(price)
+      len_cifra = len(str(value['price']))
 
-      formatsting = "{:<20} {:<20}  {:<25} {:<%s} {:<20} {:<20}%s"%(len_colorazione+20-len_cifra,CLR)
+      formatsting = "{:<20} {:<20}  {:<25} {:<%s} {:<20} {:<20} {:<20}%s"%(len_colorazione+20-len_cifra,CLR)
       print(formatsting.format(*stock_list))
 
-
+   lastPrice = ask
    time.sleep(1)
