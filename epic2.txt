@@ -1,0 +1,669 @@
+EURUSD # EUR/USD
+USDJPY # USD/JPY
+GBPUSD # GBP/USD
+AUDUSD # AUD/USD
+GBPJPY # GBP/JPY
+EURJPY # EUR/JPY
+AUDJPY # AUD/JPY
+USDCHF # USD/CHF
+USDCAD # USD/CAD
+EURGBP # EUR/GBP
+USDMXN # USD/MXN
+NZDUSD # NZD/USD
+EURAUD # EUR/AUD
+CADJPY # CAD/JPY
+EURCAD # EUR/CAD
+GBPAUD # GBP/AUD
+CHFJPY # CHF/JPY
+GBPCAD # GBP/CAD
+NZDJPY # NZD/JPY
+EURCHF # EUR/CHF
+EURNZD # EUR/NZD
+CADCHF # CAD/CHF
+AUDNZD # AUD/NZD
+AUDCAD # AUD/CAD
+GBPNZD # GBP/NZD
+GBPCHF # GBP/CHF
+NZDCAD # NZD/CAD
+AUDCHF # AUD/CHF
+NZDCHF # NZD/CHF
+EURNOK # EUR/NOK
+USDZAR # USD/ZAR
+USDNOK # USD/NOK
+GBPPLN # GBP/PLN
+NOKDKK # NOK/DKK
+EURMXN # EUR/MXN
+MXNJPY # MXN/JPY
+GBPNOK # GBP/NOK
+EURHUF # EUR/HUF
+EURZAR # EUR/ZAR
+USDCNH # USD/CNH
+NOKJPY # NOK/JPY
+GBPZAR # GBP/ZAR
+USDPLN # USD/PLN
+EURTRY # EUR/TRY
+CHFNOK # CHF/NOK
+USDDKK # USD/DKK
+GBPMXN # GBP/MXN
+TRYJPY # TRY/JPY
+USDTRY # USD/TRY
+EURPLN # EUR/PLN
+USDSEK # USD/SEK
+SGDJPY # SGD/JPY
+NOKSEK # NOK/SEK
+USDHUF # USD/HUF
+EURCNH # EUR/CNH
+AUDCNH # AUD/CNH
+ZARJPY # ZAR/JPY
+CADMXN # CAD/MXN
+DKKJPY # DKK/JPY
+EURHKD # EUR/HKD
+GBPTRY # GBP/TRY
+SEKJPY # SEK/JPY
+PLNJPY # PLN/JPY
+SEKMXN # SEK/MXN
+EURSEK # EUR/SEK
+USDCZK # USD/CZK
+CHFCNH # CHF/CNH
+GBPCNH # GBP/CNH
+CNHJPY # CNH/JPY
+CADHKD # CAD/HKD
+CADZAR # CAD/ZAR
+AUDMXN # AUD/MXN
+USDSGD # USD/SGD
+CHFHUF # CHF/HUF
+SEKTRY # SEK/TRY
+USDHKD # USD/HKD
+NZDCNH # NZD/CNH
+AUDZAR # AUD/ZAR
+CADCNH # CAD/CNH
+GBPHKD # GBP/HKD
+HKDMXN # HKD/MXN
+GBPSEK # GBP/SEK
+AUDHKD # AUD/HKD
+NZDHKD # NZD/HKD
+CADPLN # CAD/PLN
+HKDSEK # HKD/SEK
+NZDPLN # NZD/PLN
+GBPHUF # GBP/HUF
+AUDSGD # AUD/SGD
+CADSGD # CAD/SGD
+GBPSGD # GBP/SGD
+CHFTRY # CHF/TRY
+AUDTRY # AUD/TRY
+CHFHKD # CHF/HKD
+AUDNOK # AUD/NOK
+CHFSGD # CHF/SGD
+NZDMXN # NZD/MXN
+CNHHKD # CNH/HKD
+EURSGD # EUR/SGD
+CADNOK # CAD/NOK
+CHFSEK # CHF/SEK
+EURCZK # EUR/CZK
+DKKSEK # DKK/SEK
+GBPDKK # GBP/DKK
+PLNSEK # PLN/SEK
+NZDSEK # NZD/SEK
+CHFZAR # CHF/ZAR
+NZDSGD # NZD/SGD
+HKDTRY # HKD/TRY
+CHFCZK # CHF/CZK
+CHFMXN # CHF/MXN
+GBPCZK # GBP/CZK
+PLNTRY # PLN/TRY
+CHFPLN # CHF/PLN
+AUDPLN # AUD/PLN
+CADTRY # CAD/TRY
+SGDHKD # SGD/HKD
+NZDTRY # NZD/TRY
+CADSEK # CAD/SEK
+EURDKK # EUR/DKK
+CHFDKK # CHF/DKK
+SGDMXN # SGD/MXN
+EURILS # EUR/ILS
+NOKTRY # NOK/TRY
+USDILS # USD/ILS
+USDJPY_W # USD/JPY_W
+EURRON # EUR/RON
+EURUSD_W # EUR/USD_W
+TSLA # Tesla
+AAPL # Apple
+NVDA # Nvidia
+COIN # Coinbase
+AMZN # Amazon
+AMD # AMD
+PYPL # PayPal
+SHOP # Shopify
+AMC # AMC
+META # Meta Platforms Inc.
+PLTR # Palantir Technologies Inc.
+BABA # Alibaba
+NKLA # Nikola Corporation
+MSFT # Microsoft
+SNAP # Snapchat
+NVAX # Novavax
+SPCE # Virgin Galactic
+NFLX # Netflix
+TLRY # Tilray
+NIO # NIO Limited
+AFRM # Affirm Holdings, Inc.
+PLUG # Plug Power Inc.
+SOXL # Direxion Daily Semiconductor Bull 3X Shares
+GME # GameStop
+SAS # SAS
+ABNB # Airbnb, Inc.
+INTC # Intel
+BAC # Bank Of America
+BP. # BP - GBP
+GOOGL # Alphabet Inc - Class A
+SQ # Block, Inc
+BNTX # Biontech SE
+UBER # Uber
+RR. # Rolls-royce
+XPEV # XPENG INC.
+OXY # Occidental Petroleum
+DIS # Disney
+MBGN # Mercedes Benz Group
+QCOM # Qualcomm
+UN01 # Uniper
+GOOG # Alphabet Inc - Class C
+TUI1 # TUI - EUR
+SBUX # Starbucks
+F # Ford Motor
+BARC # Barclays
+DBK # Deutsche Bank
+DNO # Dno
+VNA # Vonovia SE
+TTEF # TotalEnergies SE
+BB # BlackBerry
+ORP # Orpea
+PGS # Petroleum Geo
+PFE # Pfizer
+W # Wayfair
+RHM # Rheinmetall
+CSH # Civitas Social Housing
+T # AT&T
+HLAG # HAPAG-LLOYD AG NA O.N.
+AFP # Air France
+LLOY # Lloyds Banking Group PLC
+TWLO # Twilio
+PTON # Peloton Interactive
+JD # Jd.Com
+ROKU # Roku
+SANE # Banco Santander
+BA # Boeing
+KO # Coca Cola - USD
+ORRON # Orron Energy AB
+JPM # JP Morgan
+BMW # BMW
+VOW3 # Volkswagen
+ENEL # Enel
+WFC # Wells Fargo
+XOM # Exxon Mobil
+MRNA # Moderna, Inc.
+UBSG # UBS
+AAL # American Airlines Group
+LHA # Lufthansa
+ZM # Zoom Video Communications
+PAH3 # Porsche
+BYND # Beyond Meat
+DKNG # DraftKings Inc.
+ADSGN # Adidas
+DDOG # Datadog
+PINS # Pinterest
+GM # General Motors Co
+ITM # ITM Power
+U # Unity Software Inc.
+PFC # Petrofac
+ADBE # Adobe
+VODL # Vodafone Group PLC
+EZJGB # EasyJet
+NASO # Norwegian
+BOO # Boohoo Group PLC
+JNJ # Johnson & Johnson
+CO # Groupe Casino
+CRWD # CrowdStrike
+BIDU # Baidu
+VAR1 # VARTA AG O.N.
+TSM # Taiwan Semiconductor
+PEABB # Peab
+TMV # TeamViewer AG
+ORAP # Orange
+CGG # CGG
+TIFS # TI Fluid Systems
+AML # Aston Martin
+FSLR # First Solar
+VK # Vallourec
+RNO # Renault
+TUI # TUI - GBP
+MC # LVMH
+HOOD # Robinhood Markets
+BALDB # Fastighets Balder
+GAMZ # GAM
+JUVE # Juventus FC
+EVT # Evotec
+THG # THG Holdings plc
+AG1 # AUTO1 Group SE
+NEL # NEL
+SNOW # Snowflake Inc.
+MSLH # Marshalls
+P911 # Porsche AG Vz
+CCL # Carnival - USD
+IBM # IBM
+IAG # IAG - GBP
+UCG # Unicredit
+GLEN # Glencore
+AMSZ # Austriamicrosystems
+NKE # Nike
+RDSA # Shell plc
+DPW # Deutsche Post
+ENI # Eni
+MBTN # MBTN
+QS # QuantumScape Corporation
+BA. # BAE Systems plc
+BNP # BNP Paribas
+BASD # Basf
+DASH # DoorDash Inc
+DIDAE # DIDA
+CRM # Salesforce
+VLA # Valneva SE
+SPOT # Spotify
+DAL # Delta Air
+CBK # Commerzbank
+FRO # Frontline
+TLW # Tullow
+ZAL # Zalando
+V # Visa
+GGP # GREATLAND GOLD PLC ORD 0.1P
+TIT # Telecom Italia
+LIUS # Li Auto Inc.
+WIZZ # Wizz Air
+IFX # Infineon
+ISP # Intesa Sanpaolo
+SRT # SARTORIUS AG O.N.
+BAMI # BANCO BPM
+PTNL # PostNL
+CCH # Coca Cola - GBP
+STLAM # Stellantis
+VUSA # Vanguard S&P 500 UCITS ETF
+SESG # Ses Fdr
+NCLH # Norwegian Cruise Lines
+GLE # Societe Generale
+RCL # Royal Caribbean Cruises
+JNUG # Direxion Daily Junior Gold Miners Index Bull 2X Shares
+ELUXB # Electrolux
+BN # Danone
+BMPS # BCA MPS
+ABND # ABN AMRO Group
+ISF # iShares Core FTSE 100 UCITS ETF GBP (Dist)
+RMS # Hermes
+GE # GE
+888 # 888
+INGA # ING Groep
+SOLG # SolGold
+BILIA # Bilia
+MU # Micron Technology, Inc.
+ACAP # Credit Agricole
+RWE # RWE
+WMT # Walmart
+BAYN # Bayer
+BOSSDE # Hugo Boss
+HSBA # HSBC - GBP
+VUKE # Vanguard FTSE 100 UCITS ETF
+BWO # BW Offshore
+INTRUM # Intrum AB
+TSCOL # Tesco
+S92 # SMA SOLAR TECHNOL.AG
+GILD # Gilead
+STMPA # STMicroelectronics
+WOSG # Watches of Switzerland Group plc
+BAKKA # Bakkafrost
+LGEN # Legal & General
+BBVA # BBVA
+IMB # Imperial
+NDX1 # Nordex
+RYA # Ryanair
+ALVD # Allianz
+EOAN # E.ON
+FBK # FinecoBank
+APPSES # Applus
+SGSN # SGS
+CPI # Capita
+CABK # CaixaBank
+RBSL # NatWest Group PLC
+PSON # Pearson
+ROO # Deliveroo Holdings Plc
+CARD # Card Factory
+HBR # Harbour Energy plc
+IBE # Iberdrola
+ICAG # IAG - EUR
+IUSA # iShares Core S&P 500 UCITS ETF
+NESN # Nestle
+BIOAB # BioArctic AB
+AIRFR # Airbus
+FRE # Fresenius SE & Co
+MOR # Morphosys
+BIOT # Biotage
+OCDO # Ocado Group plc
+CSP # Axa
+DOCU # DocuSign
+AALL # Anglo American
+JDW # Wetherspoon
+SRSIT # Saras
+CARF # Carrefour
+LDO # Leonardo
+WCH # Wacker Chemie
+CNHIM # CNH Industrial
+MTRO # Metro Bank
+BKT # Bankinter
+CRST # Crest Nicholson
+HEIJ # Heijmans
+1COV # Covestro
+NDASEK # Nordea
+PHGEUR # Koninklijke Philips
+SIE # Siemens
+SABEE # Banco de Sabadell
+JD. # JD Sports Fashion
+REP # Repsol
+GRLS # Grifols
+RDSB_GBP # Shell PLC - GBP
+FHZN # Flughafen Zuerich
+NOVN # Novartis - CHF
+UBIP # Ubisoft Entertainment
+ATCOA # ATCOa
+ASMLNL # ASML NV
+HUKX # HSBC FTSE 100 UCITS ETF
+VOLVB # Volvo
+MT # ArcelorMittal
+GSKL # GSK
+TKA # Thyssenkrupp
+RIOGB # Rio Tinto - GBP
+FUGRC # Fugro
+AMGNL # AMG Advanced Metallurgical Group
+RUI # Rubis
+STJ # St. James''s Place plc
+PLUSGBP # Plus500
+RACEM # Ferrari - EUR
+SAFE # Safestore
+SLHN # Swiss Life
+COND # Continental
+FER # Ferrovial
+RCF # Teleperformance
+RXL # Rexel
+TW. # Taylor Wimpey
+BALN # Baloise
+BATS # British American Tobacco - GBP
+ENGI # Engie
+FNTN # Freenet
+FXPO # Ferrexpo
+MONY # Moneysupermarket.Com Group
+MUV2 # Munich Re
+BETSB # Betsson
+AD # Koninklijke Ahold Delhaize
+DLGL # DLG
+FDX # FedEx
+SOI # Soitec
+DTED # Deutsche Telekom
+GSF # Grieg Seafood
+PAF # Pan African Resources PLC
+CRG # CRH
+SREN # Swiss Re
+NIBEB # NIBE
+NOLAB # Nolato
+TL5 # Mediaset España
+HO # Thales
+ADML # Admiral Group
+FDJ # La Francaise des Jeux Societe anonyme
+FME # Fresenius Medical Care
+MMT # Metropole Television
+SAPD # SAP
+SOW # Software
+SZU # Suedzucker
+TENM # Tenaris - EUR
+TRE # Tecnicas Reunidas
+AIXA # AIXTRON SE NA O.N.
+BRWM # BlackRock World Mining Trust plc
+FRES # Fresnillo
+HEN3 # Henkel
+INCH # Inchcape
+NOBI # Nobia
+TKWY # Takeaway.com
+WALLB # Wallenstam
+EDF # Edf
+EN # Bouygues
+OR # L'Oreal
+AGL.MI # Autogrill
+ATOP # Atos
+BVB # Borussia Dortmund
+CCLL # Carnival plc - GBP
+FCH # Funding Circle
+OXB # Oxford BioMedica plc
+PBB # PBB
+ANTO # Antofagasta
+ROSE # ZUR ROSE GROUP N
+ULVR # Unilever - GBP
+SAABB # Saab
+DGP # Vinci
+NK # Imerys
+SUP # Schneider
+CTY # City Of London Investment
+DTG # Daimler Truck Holding AG
+ENX # Euronext
+HEID # Heidelbergcement
+MRL # Merlin Properties
+ROGZ # Roche
+TEG # TAG Immobilien
+UAL # United
+VBK # Verbio
+ADEN # Adecco
+ALIG # Alimak
+DARK # Darktrace plc
+EDIN # Edinburgh Investment Trust
+FNAC # Fnac Darty
+HEIN # Heineken
+MNDI # Mondi
+BONAVB # Bo
+LIGHT # Signify
+MA # Mastercard
+MB # Mediobanca
+DPH # Dechra Pharmaceuticals
+GAW # Games Workshop Group
+KPN # Koninklijke KPN
+NG. # National Grid
+SFQ # SAF-Holland SE
+SHL # Siemens Healthineers AG
+SZG # Salzgitter
+TGS # TGS
+VIE # Veolia
+AKSO # Aker Solutions
+KORI # Korian Medica
+FFARM # ForFarmers
+SHOT # Scandic Hotels
+RI # Pernod Ricard
+AFX # Carl Zeiss Meditec
+CDIP # Christian Dior
+KER # Kering
+NOD # Nic Semiconductor
+RKH # Rockhopper Exploration
+RMG # International Distributions Services PLC
+AUSS # Austevoll
+BESI # BE Semiconductor Industries
+ENOG # Energean Oil & Gas
+PHAR # Pharming Group
+SAN # Sanofi
+MLFR # Michelin
+ADV # ADVA Optical Networking SE
+BABL # Babcock
+BPE # Bper Banca
+CEY # Centamin
+CNAL # Centrica
+LUC # Lucara Diamond
+NEXGB # National Express Group
+SHA # Schaeffler
+SPT_GBP # Spirent Communications
+TFIP # TF1
+BLNDGBP # British Land
+CAPFR # Capgemini
+GOGL # Golden Ocean
+JUST # Just Group
+RRTL # RTL Group
+SSABB # SSABb
+GM # Generali
+AIFR # Air Liquide
+RB. # Reckitt Benckiser Group
+A2A # A2A
+GLJ # Grenke
+LIO # Liontrust Asset Management Plc
+LSE # LSE
+LXS # Lanxess
+MDM # Maisons du Monde
+O2D # Telefonica DE
+PSG # Prosegur
+PSM # PSM
+SGL # Sgl Carbon
+SRG # Snam
+TRNGBP # Trainline Plc
+TRY # TR Property Investment
+BNKR # Bankers Investment Trust
+BRBY # Burberry
+DUFN # Dufry
+INVP # Investec
+SBMO # SBM Offshore
+SBRY # Sainsbury
+8TRA # Traton SE
+CASHP # Prosegur Cash
+ADPP # Aeroports De Paris
+ALO # Alstom
+ARL # Aareal Bank
+DB1 # Deutsche Boerse
+EVO # Evolution Gaming Group AB
+NA9 # Nagarro SE
+ORK # Orkla
+AEGN # Aegon
+FUTR # Future PLC
+MARS # Marston's Plc
+STAN # Standard Chartered - GBP
+TEMN # Temenos
+BIOGB # Biogaia
+TELIA # Telia
+AC # Accor
+AAF # Airtel Africa Plc
+AZNL # AstraZeneca - GBP
+DCC # DCC
+DGE # Diageo - GBP
+EMG # Man Group
+ERG # ERG
+GTTFR # GTT
+ITX # Inditex
+MNG # M&G plc
+OHL # OHL
+GENG # Genuit Group
+SNIO # Stolt Nielsen
+SRE.L # Sirius Real Estate Limited
+TEF # Telefonica
+BION # BB Biotech
+CINE # Cineworld Group
+VMUK # Virgin Money UK
+EDENFR # Edenred
+FLUI # Fluidra
+FPE3 # Fuchs Petrolub
+GLPG # Galapagos NV
+KNIN # Kuehne & Nagel
+SUBC # Subsea
+WEHA # Wereldhave
+SECUB # Securitas
+SSABA # SSABa
+ATT.L # Allianz Technology Trust
+FRP # Valeo
+SDF # K+S
+BEI # Beiersdorf
+BYG # Big Yellow Group
+CLN # Clariant
+DSY # Dassault System
+FAE # Faes Farma
+FRA # Fraport
+JMG # JPMorgan Global Emerging Markets Investment
+MKS # M&S
+MRKD # Merck - EUR
+MTO # Mitie Group plc
+POM # Compagnie Plastic Omnium
+PSN.L # Persimmon
+RTNGB # Restaurant Group
+SAF # Safran
+SGO # Saint-Gobain
+SPX # Spirax Sarco
+3IN # 3i Infrastructure
+AENA # Aena
+GNFTFR # Genfit
+HMSO # Hammerson
+LIAB # Lindab
+MOTR # Motorpoint Group Plc
+ZIL2 # Elringklinger
+ELIOR # Elior Group
+MICSDB # Millicom
+TOBII # TOBII
+WLSNC # Wolters Kluwer
+JII # JPMorgan Indian Investment Trust
+BCM # Brunello Cucinel
+ELFR # EssilorLuxottica
+EO # Faurecia
+HL. # Hargreaves Lansdown
+US # UnipolSai Assicurazioni S.p.A.
+ABF # ABF
+AGRGBP # Assura
+AV. # Aviva
+BGN # Banca Generali
+BT.A # BT Group PLC
+COK # Cancom
+ENC # ENCE
+EPRO # Europris
+GBFDE # Bilfinger
+HOC # Hochschild Mining
+LMP # Londonmetric Property
+MAB # Mitchells & Butlers
+MOWI # Mowi ASA
+NEMDE # Nemetschek
+OCI # OCI
+PRUL # Prudential
+PSTIT # POSTE ITALIANE
+US100 # US Tech 100
+US30 # US Wall Street 30
+DE40 # Germany 40
+US500 # US 500
+HK50 # Hong Kong 50
+J225 # Japan 225
+RTY # US Russel 2000
+VIX # VIX Volatility Index
+UK100 # UK 100
+NIFTY50 # India 50
+FR40 # France 40
+DXY # US Dollar Index
+CN50 # China A50
+EU50 # EU 50
+AU200 # Australia 200
+SW20 # Switzerland 20
+IT40 # Italy 40
+NL25 # Netherlands 25
+SP35 # Spain 35
+SG25 # Singapore 25
+GOLD # Gold
+OIL_CRUDE # Crude Oil
+NATURALGAS # Natural Gas
+OIL_BRENT # Brent Oil
+SILVER # Silver
+COPPER # Copper
+USCOTTON # Cotton
+PALLADIUM # Palladium
+PLATINUM # Platinum
+CORN # Corn
+COFFEEARABICA # Coffee US
+UKSUGAR # Sugar UK
+ECFZ23 # Carbon Emissions Futures Dec 2023
+USCOCOA # Cocoa US
+ALUMINUM # Aluminium Spot
+SOYBEAN # Soybean
+LEAD # Lead
+CLJ23 # Crude Oil Futures Apr 23
+CLK23 # Crude Oil Futures May 23
+TSI # Iron ORE Spot
+ORANGEJUICE # Orange Juice

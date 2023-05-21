@@ -3,3 +3,4 @@ requests
 websockets
 pandas
 apscheduler
+websocket-client

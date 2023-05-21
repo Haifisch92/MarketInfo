@@ -27,8 +27,6 @@ print("\n",logo,"\n"*numero_stock)
 
 lastPrice = 0
 
-
-
 while True:
    colonne = [UP,"  Time","Symbol","Company Name","Price","  %Chg","Volume","News",CLR]
    print("{}{:<20} {:<20}  {:<25} {:<20} {:<20} {:<20} {:<20}{}\n".format(*colonne))

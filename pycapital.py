@@ -286,6 +286,11 @@ class Capital(Connection, FinancialTools):
                 priceRealTime = market['streamingPricesAvailable']
                 self.epic.append(epic)
                 print("{:<5} {:<15} {:<15} {:<15}".format(num,name[:15],epic,str(priceRealTime)))
+                with open("epic.txt","r+") as file:
+                    elencoEpic = [line.split('#')[0] for line in file.readlines()]
+                    if epic not in elencoEpic:
+                        file.write(f"{epic} # {name}\n")
+
 
 
 
