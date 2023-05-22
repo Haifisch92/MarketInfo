@@ -37,8 +37,22 @@ logo = f"""{PANNA}
                               ███ █   █ ███   █   █ █ █ █ █ █ █ ███  █    ███ █   █ █   ███                          
 <════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════>{RESET}
 """
+def sendPing(client, ws):
+	client.getToken()
+	CST = client.CST
+	TOKEN = client.TOKEN
+	ping ={
+		"destination": "ping",
+		"correlationId": 1,
+		"cst": f"{CST}",
+		"securityToken": f"{TOKEN}"
+	}
+	ping = json.dumps(ping)
+	ws.send(ping)
+	response = ws.recv()
+	logging.info(str(response))	
 
-def sendPing(client):
+def _sendPing(client):
 	client.getToken()
 	CST = client.CST
 	TOKEN = client.TOKEN
@@ -174,18 +188,6 @@ with closing(create_connection('wss://api-streaming-capital.backend-capital.com/
 			cliMarket(response, stocks, UP, CLR)
 		if (datetime.now() - timedelta(minutes=2)) > start:
 			start = datetime.now()
-			client.getToken()
-			CST = client.CST
-			TOKEN = client.TOKEN
-			ping ={
-				"destination": "ping",
-				"correlationId": 1,
-				"cst": f"{CST}",
-				"securityToken": f"{TOKEN}"
-			}
+			sendPing(client, ws)
 
-			ping = json.dumps(ping)
-			ws.send(ping)
-			response = ws.recv()
-			logging.info(str(response))
 
