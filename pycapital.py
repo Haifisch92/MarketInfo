@@ -145,12 +145,51 @@ class Connection():
                                   headers={"X-CAP-API-KEY": self.api_key,'Content-Type': 'application/json'},
                                   data=payload )
 
+
         if data.status_code != 200:
             raise RuntimeError(data.json())
 
         self.CST,self.TOKEN = data.headers['CST'],data.headers['X-SECURITY-TOKEN']
         
         return self.CST,self.TOKEN
+
+    def getSession(self):
+
+        """ Get current session"""
+
+        payload = ''
+
+        data = self.session.get("https://api-capital.backend-capital.com/api/v1/session",
+                                    headers={'X-SECURITY-TOKEN': self.TOKEN,
+                                             'CST': self.CST,
+                                             'Content-Type': 'application/json'
+                                            },
+                                    data=payload )
+
+
+        if data.status_code != 200:
+            raise RuntimeError(data.json())
+        
+        return data
+
+    def closeSession(self):
+
+        """ Close current session"""
+
+        payload = ''
+
+        data = self.session.delete("https://api-capital.backend-capital.com/api/v1/session",
+                                    headers={'X-SECURITY-TOKEN': self.TOKEN,
+                                             'CST': self.CST,
+                                             'Content-Type': 'application/json'
+                                            },
+                                    data=payload )
+
+
+        if data.status_code != 200:
+            raise RuntimeError(data.json())
+        
+        return data
 
 
 

@@ -37,10 +37,8 @@ logo = f"""{PANNA}
                               ███ █   █ ███   █   █ █ █ █ █ █ █ ███  █    ███ █   █ █   ███                          
 <════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════>{RESET}
 """
-def sendPing(client, ws):
-	client.getToken()
-	CST = client.CST
-	TOKEN = client.TOKEN
+def sendPing(ws, CST, TOKEN):
+
 	ping ={
 		"destination": "ping",
 		"correlationId": 1,
@@ -132,6 +130,7 @@ CST = client.CST
 TOKEN = client.TOKEN
 
 
+
 with open("epic.txt","r+") as file:
 
     elencoEpic = []
@@ -186,8 +185,19 @@ with closing(create_connection('wss://api-streaming-capital.backend-capital.com/
 		response = json.loads(response)
 		if response['destination'] == 'quote':
 			cliMarket(response, stocks, UP, CLR)
-		if (datetime.now() - timedelta(minutes=2)) > start:
+		if (datetime.now() - timedelta(minutes=8)) > start:
 			start = datetime.now()
-			sendPing(client, ws)
+			try:
+				mySession = client.getSession().headers
+				CST = mySession['CST']
+				TOKEN = mySession['X-SECURITY-TOKEN']
+				sendPing(ws, CST, TOKEN)
+			except Exception as e:
+				logging.info(str(e))	
+				client.getToken()
+				CST = client.CST
+				TOKEN = client.TOKEN
+				sendPing(ws, CST, TOKEN)
+
 
 
