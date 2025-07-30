@@ -1,6 +1,0 @@
-pycryptodome
-requests
-websockets
-pandas
-apscheduler
-websocket-client

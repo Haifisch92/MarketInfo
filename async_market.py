@@ -1,13 +1,10 @@
-from random import random
 import asyncio
 import websockets
 from pycapital import Capital
 import json
-import time
 from datetime import datetime, timedelta
 import getpass
 import os
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
 import logging
 
 GIALLO = "\033[38;5;226m"
@@ -25,10 +22,9 @@ logo = f"""{PANNA}
                               █   █   █ █     ██ ██ █ █ █ █ █ █ █    █     █  ██  █ █   █ █
                               █   █ █ █  █    █ █ █ █ █ ██  ██  ███  █     █  █ █ █ ███ █ █
                               █   ██ ██   █   █   █ ███ █ █ █ █ █    █     █  █  ██ █   █ █
-                              ███ █   █ ███   █   █ █ █ █ █ █ █ ███  █    ███ █   █ █   ███                          {GIALLO} {BLU} {BIANCO}
+                              ███ █   █ ███   █   █ █ █ █ █ █ █ ███  █    ███ █   █ █   ███                                     
 {PANNA}<════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════>{BIANCO}
 """
-
 
 async def clientws(queue,CST,TOKEN,epics):
     async with websockets.connect('wss://api-streaming-capital.backend-capital.com/connect') as ws:
@@ -51,9 +47,10 @@ async def clientws(queue,CST,TOKEN,epics):
             response = await ws.recv()
             response = json.loads(response)
             if response['destination'] == 'quote':
+                #print("send to queue")
                 await queue.put(response)
 
-            print(response)
+            #print(response)
             #await sendPing(ws, client)
 
 
@@ -73,7 +70,7 @@ async def sendPing(client):
         ping = json.dumps(ping)
         await ws.send(ping)
         response = await ws.recv()
-        print(response)
+        #print(response)
         #response = json.loads(response)
 
 
@@ -88,8 +85,8 @@ async def cliMarket(queue, stocks):
     print(logo,"\n"*numero_stock)
 
     while True:
-        break
-        colonne = [UP," Time","Symbol","Company Name","$ Price","% Chg"," News",CLR]
+        #break
+        colonne = [UP,"Time","Symbol","Company Name","$ Price","% Chg","News",CLR]
         print("{}{:<20} {:<20}  {:<25} {:<20} {:<20} {:<20}{}\n".format(*colonne))
 
         response = await queue.get()
@@ -118,9 +115,9 @@ async def cliMarket(queue, stocks):
         for stock,value in stocks.items():
 
             if value['price'] > value['lprice']:
-                price = f"{VERDE}{value['price']} {BIANCO}"
+                price = f"{VERDE}{value['price']}{BIANCO}"
             else:
-                price = f"{ROSSO}{value['price']} {BIANCO}"
+                price = f"{ROSSO}{value['price']}{BIANCO}"
 
 
             stock_list = [value['time'], stock, value['name'], price, value['chg'], value['news']]
@@ -132,7 +129,7 @@ async def cliMarket(queue, stocks):
             formatsting = "{:<20} {:<20}  {:<25} {:<%s} {:<20} {:<20}%s"%(len_colorazione+20-len_cifra,CLR)
             print(formatsting.format(*stock_list))
 
-        time.sleep(0.5)
+        await asyncio.sleep(0.5)
 
 
 
@@ -145,11 +142,13 @@ async def main(client, CST, TOKEN, epics, stocks):
 email = input('Insert your capital.com email: ')
 pssw =  getpass.getpass("Insert your password:")
 api_key =  getpass.getpass("Insert your api key:")
+
+
 client = Capital(email, pssw, api_key)
 CST = client.CST
 TOKEN = client.TOKEN
 # client.selezioneEpic()
-with open("epic.txt","r+") as file:
+with open("epic2.txt","r+") as file:
 
     elencoEpic = []
     stocks = {}
@@ -174,18 +173,11 @@ newstocks = { k:v for k,v in stocks.items() if k in epics}
 # print(newstocks)
 # epics = ["OIL_CRUDE","NATURALGAS","GOLD"]
 
-
-scheduler = AsyncIOScheduler()
-scheduler.add_job(sendPing, 'interval', minutes=2, id='ping', args=[client])
-scheduler.start()
 logging.getLogger('apscheduler.executors.default').propagate = False
 
 os.system("cls||clear")
 
-loop = asyncio.get_event_loop()
-task = loop.create_task(main(client,CST, TOKEN, epics, newstocks))
-
 try:
-    loop.run_until_complete(task)
+    asyncio.run(main(client,CST, TOKEN, epics, newstocks))
 except asyncio.CancelledError:
     client.session.close()
