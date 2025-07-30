@@ -13,21 +13,21 @@ VERDE  = "\033[0;32m"
 ROSSO  = "\033[0;31m"
 BIANCO = "\033[0;97m"
 GRIGIO = "\033[38;5;244m"
-PANNA    = "\033[38;5;188m"
+PANNA  = "\033[38;5;188m"
 
+CAPITAL_WS = 'wss://api-streaming-capital.backend-capital.com/connect'
 
 logo = f"""{PANNA}
 
-                              ███ █   █ ███   █   █ ███ ███ █ █ ███ ███   ███ █   █ ███ ███
-                              █   █   █ █     ██ ██ █ █ █ █ █ █ █    █     █  ██  █ █   █ █
-                              █   █ █ █  █    █ █ █ █ █ ██  ██  ███  █     █  █ █ █ ███ █ █
-                              █   ██ ██   █   █   █ ███ █ █ █ █ █    █     █  █  ██ █   █ █
-                              ███ █   █ ███   █   █ █ █ █ █ █ █ ███  █    ███ █   █ █   ███                                     
+                                            █   █ ███ ███ █ █ ███ ███   ███ █   █ ███ ███
+                                            ██ ██ █ █ █ █ █ █ █    █     █  ██  █ █   █ █
+                                            █ █ █ █ █ ██  ██  ███  █     █  █ █ █ ███ █ █
+                                            █   █ ███ █ █ █ █ █    █     █  █  ██ █   █ █
+                                            █   █ █ █ █ █ █ █ ███  █    ███ █   █ █   ███                                     
 {PANNA}<════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════>{BIANCO}
 """
 
-async def clientws(queue,CST,TOKEN,epics):
-    async with websockets.connect('wss://api-streaming-capital.backend-capital.com/connect') as ws:
+async def client_ws(ws, queue,CST,TOKEN,epics):
 
 
         sub = {
@@ -50,31 +50,21 @@ async def clientws(queue,CST,TOKEN,epics):
                 #print("send to queue")
                 await queue.put(response)
 
-            #print(response)
-            #await sendPing(ws, client)
+
+async def keep_alive(ws, interval = 60):
+    while True:
+        try:
+            pong = await ws.ping()
+            await pong  # Aspetta la risposta
+            #print("[PING inviato]")
+            await asyncio.sleep(interval)
+        except Exception as e:
+            print(f"[Keep alive interrotto]: {e}")
+            break
 
 
-async def sendPing(client):
-    client.getToken()
-    CST = client.CST
-    TOKEN = client.TOKEN
-    async with websockets.connect('wss://api-streaming-capital.backend-capital.com/connect') as ws:
 
-        ping ={
-                "destination": "ping",
-                "correlationId": 1,
-                "cst": f"{CST}",
-                "securityToken": f"{TOKEN}"
-              }
-
-        ping = json.dumps(ping)
-        await ws.send(ping)
-        response = await ws.recv()
-        #print(response)
-        #response = json.loads(response)
-
-
-async def cliMarket(queue, stocks):
+async def cli_visualizer(queue, stocks):
 
     numero_stock = len(stocks)+2
 
@@ -135,13 +125,28 @@ async def cliMarket(queue, stocks):
 
 async def main(client, CST, TOKEN, epics, stocks):
 
-    queue = asyncio.Queue()
-    await asyncio.gather(clientws(queue,CST,TOKEN,epics), cliMarket(queue,stocks))
+    reconnect_delay = 5  # secondi tra i tentativi
+
+    while True:
+        print("[Connessione al server Capital.com...]")
+        try:
+            async with websockets.connect(CAPITAL_WS, ping_interval = None) as ws:
+                queue = asyncio.Queue()
+                keep_alive_interval = 60 * 10
+                tasks = [client_ws(ws, queue,CST,TOKEN,epics), keep_alive(ws, keep_alive_interval), cli_visualizer(queue,stocks)]
+                await asyncio.gather(*tasks)
+        except (OSError, websockets.WebSocketException) as e:
+            print(f"[Errore di connessione]: {e}")
+
+        print(f"[Riconnessione tra {reconnect_delay} secondi...]")
+        await asyncio.sleep(reconnect_delay)
 
 
-email = input('Insert your capital.com email: ')
-pssw =  getpass.getpass("Insert your password:")
-api_key =  getpass.getpass("Insert your api key:")
+
+
+email = #input('Insert your capital.com email: ')
+pssw =  #getpass.getpass("Insert your password:")
+api_key =  #getpass.getpass("Insert your api key:")
 
 
 client = Capital(email, pssw, api_key)
