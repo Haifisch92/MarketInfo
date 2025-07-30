@@ -10,7 +10,8 @@
   <h3 align="center">Capital.com CLI</h3>
 
   <p align="center">
-    Trading from command line using Capital.com
+    Trading from command line using Capital.com API
+    Disclamer: this software is indipendent and not affiliated with capital.com
   </p>
 </div>
 
