@@ -3,8 +3,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/Haifisch92/CapitalCli/blob/main/images/capital.jpeg">
-    <img src="images/capital.jpeg" alt="Logo" width="610" height="240">
+  <a href="https://github.com/Haifisch92/CapitalCli/blob/main/images/console-trader.jpg">
+    <img src="console-trader.jpg" alt="Logo" width="610" height="240">
   </a>
 
   <h3 align="center">Capital.com CLI</h3>
