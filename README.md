@@ -11,6 +11,7 @@
 
   <p align="center">
     Trading from command line using Capital.com API
+    <br>
     Disclamer: this software is indipendent and not affiliated with capital.com
   </p>
 </div>
