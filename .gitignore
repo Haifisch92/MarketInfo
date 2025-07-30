@@ -1,0 +1,5 @@
+api.txt
+__pycache__
+.venv/
+market.log
+uv.lock
