@@ -44,7 +44,7 @@ def display_ascii_art_color(image_path):
     print(ascii_art)
 
 # LOOP dinamico (aggiorna ogni 0.5s)
-image_path = "image/capital2.jpeg"
+image_path = "images/console-trader.jpg"
 
 try:
     while True:
