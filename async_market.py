@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 import getpass
 import os
 import logging
+import shutil
 
 GIALLO = "\033[38;5;226m"
 BLU    = "\033[38;5;27m"
@@ -17,18 +18,8 @@ PANNA  = "\033[38;5;188m"
 
 CAPITAL_WS = 'wss://api-streaming-capital.backend-capital.com/connect'
 
-logo = f"""{PANNA}
-
-                                            █   █ ███ ███ █ █ ███ ███   ███ █   █ ███ ███
-                                            ██ ██ █ █ █ █ █ █ █    █     █  ██  █ █   █ █
-                                            █ █ █ █ █ ██  ██  ███  █     █  █ █ █ ███ █ █
-                                            █   █ ███ █ █ █ █ █    █     █  █  ██ █   █ █
-                                            █   █ █ █ █ █ █ █ ███  █    ███ █   █ █   ███                                     
-{PANNA}<════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════>{BIANCO}
-"""
 
 async def client_ws(ws, queue,CST,TOKEN,epics):
-
 
         sub = {
                 "destination": "marketData.subscribe",
@@ -40,28 +31,41 @@ async def client_ws(ws, queue,CST,TOKEN,epics):
 
         sub = json.dumps(sub)
         await ws.send(sub)
+
         response = await ws.recv()
         response = json.loads(response)
 
         while True:
             response = await ws.recv()
             response = json.loads(response)
-            if response['destination'] == 'quote':
-                #print("send to queue")
-                await queue.put(response)
+            try:
+                if response['destination'] == 'ping':
+                    #print(response)
+                    pass
+                if response['destination'] == 'quote':
+                    #print(response)
+                    await queue.put(response)
+            except Exception as e:
+                print(response)
 
 
-async def keep_alive(ws, interval = 60):
+async def send_ping(ws, CST, TOKEN, interval = 60):
+    correlation_id = 1
     while True:
+        ping ={
+                "destination": "ping",
+                "correlationId": correlation_id,
+                "cst": f"{CST}",
+                "securityToken": f"{TOKEN}"
+              }
         try:
-            pong = await ws.ping()
-            await pong  # Aspetta la risposta
-            #print("[PING inviato]")
+            ping = json.dumps(ping)
+            await ws.send(ping)
+            correlation_id += 1
             await asyncio.sleep(interval)
         except Exception as e:
             print(f"[Keep alive interrotto]: {e}")
             break
-
 
 
 async def cli_visualizer(queue, stocks):
@@ -71,13 +75,40 @@ async def cli_visualizer(queue, stocks):
     UP     = f"\x1B[{numero_stock}A" # sposta il cursore in alto tanto quanto il numero_stock
     CLR    = "\x1B[0K"
 
+    ascii_art = ""
 
-    print(logo,"\n"*numero_stock)
+    with open("capital.txt") as capital_logo:
+        for line in capital_logo.readlines():
+            ascii_art += line 
+
+    print(ascii_art,"\n"*numero_stock)
+
+    size = shutil.get_terminal_size()
+    prev_width, prev_height = size.columns, size.lines
 
     while True:
-        #break
-        colonne = [UP,"Time","Symbol","Company Name","$ Price","% Chg","News",CLR]
-        print("{}{:<20} {:<20}  {:<25} {:<20} {:<20} {:<20}{}\n".format(*colonne))
+
+        size = shutil.get_terminal_size()
+        width, height = size.columns, size.lines
+
+        if prev_width != width or prev_height != height:
+            prev_width = width
+            prev_height = height
+            os.system("cls||clear")
+            os.system(f"jp2a --width={width} --output=capital.txt --colors image/capital2.jpeg")
+            ascii_art = ""
+            with open("capital.txt") as capital_logo:
+                for line in capital_logo.readlines():
+                    ascii_art += line 
+            print(ascii_art,"\n"*numero_stock)
+
+
+        info_lenght = 105
+
+        left_space = (width - info_lenght) / 2
+
+        colonne = [UP,"Time",left_space,"Symbol","Company Name","$ Price","% Chg","News",CLR]
+        print("{}{:>{}} {:>20}  {:>25} {:>20} {:>20} {:>20}{}\n".format(*colonne))
 
         response = await queue.get()
         if response is None:
@@ -110,13 +141,13 @@ async def cli_visualizer(queue, stocks):
                 price = f"{ROSSO}{value['price']}{BIANCO}"
 
 
-            stock_list = [value['time'], stock, value['name'], price, value['chg'], value['news']]
+            stock_list = [value['time'], left_space, stock, value['name'], price, value['chg'], value['news']]
 
             # CALCOLO LA LUNGHEZZA DEL CODICE ANSI PER AVERE UNA SPAZIATURA DINAMICA
             len_colorazione = len(price)
             len_cifra = len(str(value['price']))
 
-            formatsting = "{:<20} {:<20}  {:<25} {:<%s} {:<20} {:<20}%s"%(len_colorazione+20-len_cifra,CLR)
+            formatsting = "{:>{}} {:>20}  {:>25} {:>%s} {:>20} {:>20}%s"%(len_colorazione+20-len_cifra,CLR)
             print(formatsting.format(*stock_list))
 
         await asyncio.sleep(0.5)
@@ -128,12 +159,12 @@ async def main(client, CST, TOKEN, epics, stocks):
     reconnect_delay = 5  # secondi tra i tentativi
 
     while True:
-        print("[Connessione al server Capital.com...]")
         try:
+            os.system("cls||clear")
             async with websockets.connect(CAPITAL_WS, ping_interval = None) as ws:
                 queue = asyncio.Queue()
-                keep_alive_interval = 60 * 10
-                tasks = [client_ws(ws, queue,CST,TOKEN,epics), keep_alive(ws, keep_alive_interval), cli_visualizer(queue,stocks)]
+                keep_alive_interval = 60 * 10 # valore in secondi io voglio un keep alive ogni 10 minuti
+                tasks = [client_ws(ws, queue,CST,TOKEN,epics), send_ping(ws, CST, TOKEN, keep_alive_interval), cli_visualizer(queue,stocks)]
                 await asyncio.gather(*tasks)
         except (OSError, websockets.WebSocketException) as e:
             print(f"[Errore di connessione]: {e}")
@@ -144,9 +175,9 @@ async def main(client, CST, TOKEN, epics, stocks):
 
 
 
-email = #input('Insert your capital.com email: ')
-pssw =  #getpass.getpass("Insert your password:")
-api_key =  #getpass.getpass("Insert your api key:")
+email = input('Insert your capital.com email: ')
+pssw =  getpass.getpass("Insert your password:")
+api_key =  getpass.getpass("Insert your api key:")
 
 
 client = Capital(email, pssw, api_key)
@@ -177,8 +208,6 @@ newstocks = { k:v for k,v in stocks.items() if k in epics}
 # print(selezioneEpic)
 # print(newstocks)
 # epics = ["OIL_CRUDE","NATURALGAS","GOLD"]
-
-logging.getLogger('apscheduler.executors.default').propagate = False
 
 os.system("cls||clear")
 
